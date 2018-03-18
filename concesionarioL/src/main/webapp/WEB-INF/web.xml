@@ -21,7 +21,7 @@
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>faces/AutomovilList.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>
