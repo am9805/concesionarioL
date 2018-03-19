@@ -21,27 +21,6 @@ import javax.persistence.Query;
 public class AutomovilManager implements AutomovilManagerLocal {
 
     
-    @EJB
-    private VentaManagerLocal ventaManager;
-
-    @EJB
-    private TipoAutomovilManagerLocal tipoAutomovilManager;
-
-    @EJB
-    private MarcaManagerLocal marcaManager;
-
-    @EJB
-    private LineaManagerLocal lineaManager;
-
-    @EJB
-    private FacturaManagerLocal facturaManager;
-
-    @EJB
-    private AutomovilManagerLocal automovilManager;
-
-    private Automovil automovil;
-    private List<Automovil> automoviles;
-    
     @PersistenceContext(unitName = "com.udea_concesionarioL_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -56,10 +35,6 @@ public class AutomovilManager implements AutomovilManagerLocal {
         return em.merge(automovil);
     }
     
-    @Override
-    public void refresh() {
-        automoviles = automovilManager.getAllAutomoviles();
-    }
 
 //    public void agregar(){
 //        Query query = em.

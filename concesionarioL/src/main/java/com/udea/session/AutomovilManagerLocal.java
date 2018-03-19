@@ -22,7 +22,5 @@ public interface AutomovilManagerLocal {
     
     void create(Automovil auto);
     
-    void refresh();
-    
     
 }
