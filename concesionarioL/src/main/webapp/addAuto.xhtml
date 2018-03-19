@@ -28,7 +28,11 @@ and open the template in the editor.
                     <p:outputLabel value="Linea del auto:" for="linea" />
                     <p:inputText id="linea" title="Linea del auto" required="true" requiredMessage="La linea del auto es requerida"/>
                     <p:outputLabel value="¿El auto está en venta?" for="en_venta" />
-                    <p:inputText id="en_venta" title="Disponibilidad del auto" required="true" requiredMessage="La disponibilidad del auto es requerida"/>
+                    <h:selectOneRadio id="en_venta" value="a" title="¿Disponible?" tabindex="5">
+                        <f:selectItem itemLabel="Sí" itemValue="true" />
+                        <f:selectItem itemLabel="No" itemValue="false" />
+                        <f:validateBean disabled="false"/>
+                    </h:selectOneRadio>
                     <p:outputLabel value="Tiempo de garantía:" for="meses_garantia" />
                     <p:inputText id="meses_garantia" title="Tiempo (en meses) de garantia:" required="true" requiredMessage="El Número de seguridad es requerido"/>
                     <p:outputLabel value="Foto del auto:" for="foto" />
