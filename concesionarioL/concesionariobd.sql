@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-03-2018 a las 21:30:08
+-- Tiempo de generación: 19-03-2018 a las 21:43:05
 -- Versión del servidor: 5.7.20
 -- Versión de PHP: 7.1.7
 
@@ -134,8 +134,8 @@ CREATE TABLE `venta` (
 --
 ALTER TABLE `automovil`
   ADD PRIMARY KEY (`id_automovil`),
-  ADD KEY `tipo_automovil` (`tipo_automovil`),
-  ADD KEY `linea` (`linea`);
+  ADD KEY `linea` (`linea`),
+  ADD KEY `tipo_automovil` (`tipo_automovil`);
 
 --
 -- Indices de la tabla `factura`
@@ -212,8 +212,8 @@ ALTER TABLE `venta`
 -- Filtros para la tabla `automovil`
 --
 ALTER TABLE `automovil`
-  ADD CONSTRAINT `automovil_ibfk_1` FOREIGN KEY (`tipo_automovil`) REFERENCES `consecionariobd`.`tipoAutomovil` (`id_tipo`),
-  ADD CONSTRAINT `automovil_ibfk_2` FOREIGN KEY (`linea`) REFERENCES `linea` (`id_linea`);
+  ADD CONSTRAINT `automovil_ibfk_2` FOREIGN KEY (`linea`) REFERENCES `linea` (`id_linea`),
+  ADD CONSTRAINT `tipo_automovil` FOREIGN KEY (`tipo_automovil`) REFERENCES `tipoAutomovil` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `linea`
