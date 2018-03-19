@@ -86,6 +86,17 @@ public class Automovil implements Serializable {
         this.foto = foto;
     }
 
+    public Automovil(Integer idAutomovil, Integer cilindraje, String color, 
+            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto) {
+        this.idAutomovil = idAutomovil;
+        this.cilindraje = cilindraje;
+        this.color = color;
+        this.precio = precio;
+        this.enVenta = enVenta;
+        this.mesesGarantia = meses_garantia;
+        this.foto = foto;
+    }
+
     public Integer getIdAutomovil() {
         return idAutomovil;
     }
@@ -191,5 +202,5 @@ public class Automovil implements Serializable {
     public String toString() {
         return "com.udea.entity.Automovil[ idAutomovil=" + idAutomovil + " ]";
     }
-    
+
 }

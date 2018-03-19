@@ -20,4 +20,9 @@ public interface AutomovilManagerLocal {
 
     Automovil update(Automovil automovil);
     
+    void create(Automovil auto);
+    
+    void refresh();
+    
+    
 }

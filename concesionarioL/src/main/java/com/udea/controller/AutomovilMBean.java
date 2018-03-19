@@ -92,5 +92,11 @@ public class AutomovilMBean implements Serializable {
         automoviles = automovilManager.getAllAutomoviles();
     }
 
+    private void agregarAuto(Integer idAutomovil, Integer cilindraje, String color, 
+            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto){
+        Automovil nuevoAuto;
+        nuevoAuto = new Automovil(idAutomovil,cilindraje,color,precio,enVenta,meses_garantia,foto);
+        automovilManager.create(nuevoAuto);
+    }
 
 }

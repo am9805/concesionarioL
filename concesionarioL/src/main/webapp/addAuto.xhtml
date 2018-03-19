@@ -17,6 +17,8 @@ and open the template in the editor.
             <h:form>
                 <h1><h:outputText value="Agregar un auto"/></h1>
                 <p:panelGrid columns="2">
+                    <p:outputLabel value="Id del auto:" for="id_automovil"/>
+                    <p:inputText id="id_automovil" title="Identificacion" required="true"  requiredMessage="La identificación del auto es requerida"/>
                     <p:outputLabel value="Modelo del auto:" for="tipo_automovil"/>
                     <p:inputText id="tipo_automovil" title="Modelo" required="true"  requiredMessage="El modelo del auto es requerido"/>
                     <p:outputLabel value="Cilindraje del auto:" for="cilindraje" />
@@ -40,8 +42,9 @@ and open the template in the editor.
                 </p:panelGrid>
                 <p:messages id="msg"/>
                 <br/>
-                <h:commandButton id="verificar" value="Verificar Datos" action="addAuto.xhtml"/>
-                <h:commandButton id="confirmar" value="Confirmar" action="addAuto.xhtml"/>
+                <h:commandButton id="verificar" value="Verificar" action="addAuto.xhtml"/>
+                <h:commandButton id="Confirmar" value="Confirmar" action="addAuto.xhtml"/>
+                <h:commandButton id="Agregar otro auto" value="Confirmar" action="AutomovilList.xhtml"/>
             </h:form>
         </f:view>
     </h:body>
