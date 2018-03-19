@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Agregar autos</title>
+    </h:head>
+    <h:body> 
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Agregar un auto"/></h1>
+                <p:panelGrid columns="2">
+                    <p:outputLabel value="Modelo del auto:" for="tipo_automovil"/>
+                    <p:inputText id="tipo_automovil" title="Modelo" required="true"  requiredMessage="El modelo del auto es requerido"/>
+                    <p:outputLabel value="Cilindraje del auto:" for="cilindraje" />
+                    <p:inputText id="cilindraje" title="cilindraje" required="true" requiredMessage="El cilindraje es requerido"/>
+                    <p:outputLabel value="Color del auto" for="color" />
+                    <p:inputText id="color" title="Color del auto" required="true" requiredMessage="El color del auto es requerido"/>
+                    <p:outputLabel value="Precio del auto:" for="precio" />
+                    <p:inputText id="precio" title="Precio del auto" required="true" requiredMessage="El precio del auto es requerido"/>
+                    <p:outputLabel value="Linea del auto:" for="linea" />
+                    <p:inputText id="linea" title="Linea del auto" required="true" requiredMessage="La linea del auto es requerida"/>
+                    <p:outputLabel value="¿El auto está en venta?" for="en_venta" />
+                    <p:inputText id="en_venta" title="Disponibilidad del auto" required="true" requiredMessage="La disponibilidad del auto es requerida"/>
+                    <p:outputLabel value="Tiempo de garantía:" for="meses_garantia" />
+                    <p:inputText id="meses_garantia" title="Tiempo (en meses) de garantia:" required="true" requiredMessage="El Número de seguridad es requerido"/>
+                    <p:outputLabel value="Foto del auto:" for="foto" />
+                    <p:inputText id="foto" title="Foto del auto" required="true" requiredMessage="La foto del auto es requerida"/>
+                </p:panelGrid>
+                <p:messages id="msg"/>
+                <br/>
+                <h:commandButton id="verificar" value="Verificar Datos" action="addAuto.xhtml"/>
+                <h:commandButton id="confirmar" value="Confirmar" action="addAuto.xhtml"/>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
