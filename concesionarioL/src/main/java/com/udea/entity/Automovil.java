@@ -111,6 +111,7 @@ public class Automovil implements Serializable {
         this.color = color;
     }
 
+    
     public Integer getPrecio() {
         return precio;
     }
