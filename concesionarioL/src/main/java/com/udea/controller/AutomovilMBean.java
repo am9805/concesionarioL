@@ -13,6 +13,7 @@ import com.udea.session.MarcaManagerLocal;
 import com.udea.session.TipoAutomovilManagerLocal;
 import com.udea.session.VentaManagerLocal;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -42,8 +43,14 @@ public class AutomovilMBean implements Serializable {
 
     private Automovil automovil;
     private List<Automovil> automoviles;
+    private List<Automovil> carritoDeCompras;
     
     public AutomovilMBean() {
+        carritoDeCompras = new ArrayList<Automovil>();
+    }
+    
+    public List<Automovil> getCarrito(){
+        return carritoDeCompras;
     }
 
     public List<Automovil> getAutomoviles() {
@@ -84,8 +91,10 @@ public class AutomovilMBean implements Serializable {
         return "LIST";
     }
     
-    public String pagina2(){
-        return "PAGINA";
+    public void addCart(Automovil auto){
+        System.out.println(auto.getLinea().getNombre());
+
+        carritoDeCompras.add(auto);
     }
 
     private void refresh() {

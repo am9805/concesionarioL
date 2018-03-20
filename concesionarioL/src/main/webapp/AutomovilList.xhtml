@@ -54,7 +54,12 @@
                               <td>#{item.precio}</td>
                               <td><a class="waves-effect waves-light btn modal-trigger" onclick="showModal('#{item.idAutomovil}modal')">Modal</a></td>
                               <td>
-                                  <h:commandButton value="" action="${automovilMBean.automoviles}" />
+                                  <h:commandLink 
+                                      class="btn-floating btn-large waves-effect waves-light red" 
+                                      action="${automovilMBean.addCart(item)}" 
+                                      value="">
+                                      <i class="material-icons left">add_shopping_cart</i>
+                                  </h:commandLink>
                               </td>
                             </tr>
                             <div id="#{item.idAutomovil}modal" class="modal" style="width: 500px;">
@@ -70,9 +75,7 @@
                             </div>
                         </ui:repeat>
                     </tbody>
-                  </table>
-                
-                
+                  </table>          
             </h:form>
         </f:view>
         </div>
