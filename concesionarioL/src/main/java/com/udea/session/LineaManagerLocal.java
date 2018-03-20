@@ -20,4 +20,7 @@ public interface LineaManagerLocal {
 
     Linea update(Linea linea);
     
+    boolean checkLinea(Integer idLinea);
+
+    
 }

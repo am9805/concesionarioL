@@ -20,15 +20,25 @@ import javax.persistence.PersistenceContext;
 public class LineaManager implements LineaManagerLocal {
 
     @PersistenceContext(unitName = "com.udea_concesionarioL_war_1.0-SNAPSHOTPU")
-    private EntityManager em;  
-    
+    private EntityManager em;
+
     @Override
     public List<Linea> getAllLineas() {
         Query query = em.createNamedQuery("Linea.findAll");
         return query.getResultList();
     }
+
     @Override
     public Linea update(Linea linea) {
         return em.merge(linea);
+    }
+
+    
+    @Override
+    public boolean checkLinea(Integer idLinea) {
+        String query = "SELECT l FROM Linea l WHERE l.idLinea = :idLinea";
+        Query q = em.createQuery(query);
+        q.setParameter("idLinea", idLinea);
+        return q.getResultList().size() > 0;
     }
 }

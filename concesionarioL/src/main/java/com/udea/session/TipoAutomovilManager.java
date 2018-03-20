@@ -20,8 +20,8 @@ import javax.persistence.Query;
 public class TipoAutomovilManager implements TipoAutomovilManagerLocal {
 
     @PersistenceContext(unitName = "com.udea_concesionarioL_war_1.0-SNAPSHOTPU")
-    private EntityManager em;  
-    
+    private EntityManager em;
+
     @Override
     public List<Tipoautomovil> getAllTipoAutomovil() {
         Query query = em.createNamedQuery("Tipoautomovil.findAll");
@@ -32,6 +32,13 @@ public class TipoAutomovilManager implements TipoAutomovilManagerLocal {
     public Tipoautomovil update(Tipoautomovil tipoAutomovil) {
         return em.merge(tipoAutomovil);
     }
-
     
+    @Override
+    public boolean checkTipo(Integer idTipo) {
+        String query = "SELECT t FROM tipoAutomovil t WHERE t.idTipo = :idTipo";
+        Query q = em.createQuery(query);
+        q.setParameter("idLinea", idTipo);
+        return q.getResultList().size() > 0;
+    }
+
 }

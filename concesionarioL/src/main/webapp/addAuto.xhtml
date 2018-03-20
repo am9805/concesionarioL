@@ -15,36 +15,39 @@ and open the template in the editor.
     <h:body> 
         <f:view>
             <h:form>
-                <h1><h:outputText value="Agregar un auto"/></h1>
-                <p:panelGrid columns="2">
-                    <p:outputLabel value="Id del auto:" for="id_automovil"/>
-                    <p:inputText id="id_automovil" title="Identificacion" required="true"  requiredMessage="La identificación del auto es requerida"/>
-                    <p:outputLabel value="Modelo del auto:" for="tipo_automovil"/>
-                    <p:inputText id="tipo_automovil" title="Modelo" required="true"  requiredMessage="El modelo del auto es requerido"/>
-                    <p:outputLabel value="Cilindraje del auto:" for="cilindraje" />
-                    <p:inputText id="cilindraje" title="cilindraje" required="true" requiredMessage="El cilindraje es requerido"/>
-                    <p:outputLabel value="Color del auto" for="color" />
-                    <p:inputText id="color" title="Color del auto" required="true" requiredMessage="El color del auto es requerido"/>
-                    <p:outputLabel value="Precio del auto:" for="precio" />
-                    <p:inputText id="precio" title="Precio del auto" required="true" requiredMessage="El precio del auto es requerido"/>
-                    <p:outputLabel value="Linea del auto:" for="linea" />
-                    <p:inputText id="linea" title="Linea del auto" required="true" requiredMessage="La linea del auto es requerida"/>
-                    <p:outputLabel value="¿El auto está en venta?" for="en_venta" />
+                <h1><h:outputText value="Agregar un automóvil"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Id del auto:" for="idAutomovil" />
+                    <h:inputText id="idAutomovil" value="#{automovilMBean.automovil.idAutomovil}" title="IdAutomovil" required="true" requiredMessage="The IdAutomovil field is required."/>
+                    <h:outputLabel value="Cilindraje del auto:" for="cilindraje" />
+                    <h:inputText id="cilindraje" value="#{automovilMBean.automovil.cilindraje}" title="Cilindraje" />
+                    <h:outputLabel value="Color del auto:" for="color" />
+                    <h:inputText id="color" value="#{automovilMBean.automovil.color}" title="Color" required="true" requiredMessage="The Color field is required."/>
+                    <h:outputLabel value="Precio del auto:" for="precio" />
+                    <h:inputText id="precio" value="#{automovilMBean.automovil.precio}" title="Precio" />
+                    <h:outputLabel value="¿El auto está en venta?:" for="enVenta" />
                     <h:selectOneRadio id="en_venta" value="a" title="¿Disponible?" tabindex="5">
-                        <f:selectItem itemLabel="Sí" itemValue="true" />
-                        <f:selectItem itemLabel="No" itemValue="false" />
+                        <f:selectItem itemLabel="Sí" itemValue="#{automovilMBean.automovil.enVenta}" />
+                        <f:selectItem itemLabel="No" itemValue="#{automovilMBean.automovil.enVenta}" />
                         <f:validateBean disabled="false"/>
                     </h:selectOneRadio>
-                    <p:outputLabel value="Tiempo de garantía:" for="meses_garantia" />
-                    <p:inputText id="meses_garantia" title="Tiempo (en meses) de garantia:" required="true" requiredMessage="El Número de seguridad es requerido"/>
-                    <p:outputLabel value="Foto del auto:" for="foto" />
-                    <p:inputText id="foto" title="Foto del auto" required="true" requiredMessage="La foto del auto es requerida"/>
-                </p:panelGrid>
-                <p:messages id="msg"/>
-                <br/>
-                <h:commandButton id="verificar" value="Verificar" action="addAuto.xhtml"/>
+                    <h:outputLabel value="Tiempo de garantía:" for="mesesGarantia" />
+                    <h:inputText id="mesesGarantia" value="#{automovilMBean.automovil.mesesGarantia}" title="MesesGarantia" />
+                    <h:outputLabel value="Foto del auto:" for="foto" />
+                    <h:inputTextarea rows="4" cols="30" id="foto" value="#{automovilMBean.automovil.foto}" title="Foto" required="true" requiredMessage="The Foto field is required."/>
+                    <h:outputLabel value="Modelo del auto:" for="tipoAutomovil" />
+                    <h:selectOneMenu id="tipoAutomovil" value="#{automovilMBean.automovil.tipoAutomovil}" title="TipoAutomovil" >
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Linea del auto:" for="linea" />
+                    <h:selectOneMenu id="linea" value="#{automovilMBean.automovil.linea}" title="Linea" >
+                        <f:selectItems value="#{fixme}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:messages id="msg"/>
+                <hr/>
+                <h:commandButton id="Verificar" value="verificar" action="addAuto.xhtml"/>
                 <h:commandButton id="Confirmar" value="Confirmar" action="addAuto.xhtml"/>
-                <h:commandButton id="Agregar otro auto" value="Confirmar" action="AutomovilList.xhtml"/>
             </h:form>
         </f:view>
     </h:body>

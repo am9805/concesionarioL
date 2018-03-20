@@ -87,7 +87,8 @@ public class Automovil implements Serializable {
     }
 
     public Automovil(Integer idAutomovil, Integer cilindraje, String color, 
-            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto) {
+            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto, 
+            Linea linea, Tipoautomovil tipoAutomovil) {
         this.idAutomovil = idAutomovil;
         this.cilindraje = cilindraje;
         this.color = color;
@@ -95,6 +96,8 @@ public class Automovil implements Serializable {
         this.enVenta = enVenta;
         this.mesesGarantia = meses_garantia;
         this.foto = foto;
+        this.linea=linea;
+        this.tipoAutomovil = tipoAutomovil;
     }
 
     public Integer getIdAutomovil() {

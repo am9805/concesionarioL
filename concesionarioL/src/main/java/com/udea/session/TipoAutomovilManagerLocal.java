@@ -20,4 +20,6 @@ public interface TipoAutomovilManagerLocal {
 
     Tipoautomovil update(Tipoautomovil tipoAutomovil);
     
+    boolean checkTipo(Integer idTipo);
+    
 }

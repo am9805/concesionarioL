@@ -6,6 +6,8 @@
 package com.udea.controller;
 
 import com.udea.entity.Automovil;
+import com.udea.entity.Linea;
+import com.udea.entity.Tipoautomovil;
 import com.udea.session.AutomovilManagerLocal;
 import com.udea.session.FacturaManagerLocal;
 import com.udea.session.LineaManagerLocal;
@@ -46,6 +48,8 @@ public class AutomovilMBean implements Serializable {
 
     private Automovil automovil;
     private List<Automovil> automoviles;
+    private String msg1 = "CORRECTO";
+    private String msg2 = "ERROR";
 
     public AutomovilMBean() {
     }
@@ -93,10 +97,29 @@ public class AutomovilMBean implements Serializable {
     }
 
     private void agregarAuto(Integer idAutomovil, Integer cilindraje, String color, 
-            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto){
+            Integer precio, Boolean enVenta, Integer meses_garantia, byte[] foto, 
+            Linea linea, Tipoautomovil tipo){
         Automovil nuevoAuto;
-        nuevoAuto = new Automovil(idAutomovil,cilindraje,color,precio,enVenta,meses_garantia,foto);
+        nuevoAuto = new Automovil(idAutomovil,cilindraje,color,precio,enVenta,
+                meses_garantia,foto,linea, tipo);
         automovilManager.create(nuevoAuto);
+    }
+    
+    /**
+     * Action handler - Verifica los datos ingresados. Se llama cuando
+     * se presiona el boton verificar en addAuto
+     *
+     * @return
+     */  
+    private String verify(Integer idLinea, Integer idTipo){
+        System.out.println("###VERIFY###");
+        boolean validacion1 = lineaManager.checkLinea(idLinea);
+        boolean validacion2 = tipoAutomovilManager.checkTipo(idTipo);
+        if(validacion1 && validacion2){
+            return msg1;
+        } else {
+            return msg2;
+        }
     }
 
 }

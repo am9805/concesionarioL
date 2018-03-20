@@ -34,15 +34,7 @@ public class AutomovilManager implements AutomovilManagerLocal {
     public Automovil update(Automovil automovil) {
         return em.merge(automovil);
     }
-    
 
-//    public void agregar(){
-//        Query query = em.
-//                
-//                INSERT INTO concesionariobd.automovil (id_automovil, tipo_automovil, cilindraje, color, precio, linea, en_venta, meses_garantia, foto) 
-//	VALUES (231321, 1, 212121, 'asasa', 212121, 1, true, 213231321, x'736461736164647361616473');
-//
-//    }
     @Override
     public void create(Automovil auto) {
         String query = "INSERT INTO automovil (id_automovil, id_tipo, cilindraje, color, precio, linea, id_venta, meses_garantia, foto) VALUES (a, b, c, d, e, f, g, h, i)";
