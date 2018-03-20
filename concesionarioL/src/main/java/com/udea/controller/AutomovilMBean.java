@@ -83,6 +83,10 @@ public class AutomovilMBean implements Serializable {
         System.out.println("###LIST###");
         return "LIST";
     }
+    
+    public String pagina2(){
+        return "PAGINA";
+    }
 
     private void refresh() {
         automoviles = automovilManager.getAllAutomoviles();

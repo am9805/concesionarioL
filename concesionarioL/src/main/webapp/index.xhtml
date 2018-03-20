@@ -15,6 +15,9 @@
        <ui:include src="components/nav-bar.xhtml" />
        <div class="container">
         Hello from Facelets asdf asdf asdf
+        <h:form>
+            <h:commandButton value="${automovilMBean.list()}" action="AutomovilList" />
+        </h:form>
       </div>
         
     </h:body>
