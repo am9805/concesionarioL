@@ -19,5 +19,10 @@ public interface AutomovilManagerLocal {
     List<Automovil> getAllAutomoviles();
 
     Automovil update(Automovil automovil);
+
+    void vendido(int idAutomovil);
+
+    Automovil getAutomovil(int idAutomovil);
+
     
 }

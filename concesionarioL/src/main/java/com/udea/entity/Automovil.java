@@ -29,9 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "automovil")
-@XmlRootElement
+@XmlRootElement 
 @NamedQueries({
     @NamedQuery(name = "Automovil.findAll", query = "SELECT a FROM Automovil a")
+    , @NamedQuery(name = "Automovil.replace", query = "UPDATE Automovil a SET a.enVenta = false WHERE a.idAutomovil = :idAutomovil")
     , @NamedQuery(name = "Automovil.findByIdAutomovil", query = "SELECT a FROM Automovil a WHERE a.idAutomovil = :idAutomovil")
     , @NamedQuery(name = "Automovil.findByCilindraje", query = "SELECT a FROM Automovil a WHERE a.cilindraje = :cilindraje")
     , @NamedQuery(name = "Automovil.findByColor", query = "SELECT a FROM Automovil a WHERE a.color = :color")
@@ -191,5 +192,5 @@ public class Automovil implements Serializable {
     public String toString() {
         return "com.udea.entity.Automovil[ idAutomovil=" + idAutomovil + " ]";
     }
-    
+
 }

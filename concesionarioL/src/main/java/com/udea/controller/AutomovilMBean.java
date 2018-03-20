@@ -73,6 +73,11 @@ public class AutomovilMBean implements Serializable {
         automovil = automovilManager.update(automovil);
         return "SAVED"; // Para el caso navegacional
     }
+    public String vendido(int  idAutomovil){
+        automovilManager.vendido(idAutomovil);
+        System.out.println(idAutomovil);
+        return "VENDIDO"; // Vuelve a la ventana AutomovilList.xhtml segun el faces-config
+    }
 
     /**
      * Action handler - returno hacia la vista de la lista de clientes
@@ -83,6 +88,8 @@ public class AutomovilMBean implements Serializable {
         System.out.println("###LIST###");
         return "LIST";
     }
+    
+    
 
     private void refresh() {
         automoviles = automovilManager.getAllAutomoviles();

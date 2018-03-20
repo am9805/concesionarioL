@@ -30,7 +30,7 @@
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="IdAutomovil" />
+                            <h:outputText value="Identificación del Automovil" />
                         </f:facet>
                         <h:outputText value="#{item.idAutomovil}" />
                     </p:column>
@@ -54,20 +54,20 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="EnVenta" />
+                            <h:outputText value="En venta" />
                         </f:facet>
                         <h:outputText value="#{item.enVenta}" />
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="MesesGarantia" />
+                            <h:outputText value="Meses de Garantia" />
                         </f:facet>
                         <h:outputText value="#{item.mesesGarantia}" />
                     </p:column>
 
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TipoAutomovil" />
+                            <h:outputText value="Tipo de Automovil" />
                         </f:facet>
                         <h:outputText value="#{item.tipoAutomovil.nombre}" />
                     </p:column>
@@ -76,6 +76,12 @@
                             <h:outputText value="Linea" />
                         </f:facet>
                         <h:outputText value="#{item.linea.nombre}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Click aqui" />
+                        </f:facet>
+                        <h:commandLink action="#{automovilMBean.vendido(item.idAutomovil)}" value ="COMPRAR " />
                     </p:column>
                 </p:dataTable>
             </h:form>

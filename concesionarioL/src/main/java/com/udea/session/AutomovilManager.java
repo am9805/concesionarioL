@@ -20,17 +20,40 @@ import javax.persistence.Query;
 public class AutomovilManager implements AutomovilManagerLocal {
 
     @PersistenceContext(unitName = "com.udea_concesionarioL_war_1.0-SNAPSHOTPU")
-    private EntityManager em;    
-    
+    private EntityManager em;
+
     @Override
     public List<Automovil> getAllAutomoviles() {
         Query query = em.createNamedQuery("Automovil.findAll");
         return query.getResultList();
     }
-    
+    @Override
+    public Automovil getAutomovil(int idAutomovil) {
+        Query query = em.createNamedQuery("Automovil.findAll");
+        List<Automovil> automoviles = query.getResultList();
+        if (!automoviles.isEmpty()) {
+            for (Automovil auto : automoviles) {
+                if (auto.getIdAutomovil() == idAutomovil) {
+                    return auto;
+                }
+            }
+        }
+        return null;
+    }
     @Override
     public Automovil update(Automovil automovil) {
         return em.merge(automovil);
     }
+
+    @Override
+    public void vendido(int idAutomovil) {
+        Query query = em.createNamedQuery("Automovil.replace");
+//        Automovil auto = getAutomovil(idAutomovil);
+//        auto.setEnVenta(false);
+        query.setParameter("idAutomovil", idAutomovil);
+//        return auto;
+    }
+
+    
 
 }
