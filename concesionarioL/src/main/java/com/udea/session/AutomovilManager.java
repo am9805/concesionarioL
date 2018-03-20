@@ -45,6 +45,7 @@ public class AutomovilManager implements AutomovilManagerLocal {
         return em.merge(automovil);
     }
 
+    
     @Override
     public void vendido(int idAutomovil) {
         Query query = em.createNamedQuery("Automovil.replace");
