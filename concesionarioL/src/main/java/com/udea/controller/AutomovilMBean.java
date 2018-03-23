@@ -77,8 +77,9 @@ public class AutomovilMBean implements Serializable {
      */
     public String update() {
         System.out.println("###UPDATE###");
+        automovil.setEnVenta(false);
         automovil = automovilManager.update(automovil);
-        return "SAVED"; // Para el caso navegacional
+        return "LIST"; // Para el caso navegacional
     }
 
     /**
@@ -92,8 +93,9 @@ public class AutomovilMBean implements Serializable {
     }
     
     public void addCart(Automovil auto){
+        this.automovil = auto;
         System.out.println(auto.getLinea().getNombre());
-
+        update();
         carritoDeCompras.add(auto);
     }
 
