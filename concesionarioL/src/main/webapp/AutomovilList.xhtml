@@ -8,7 +8,7 @@
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"></link>
-    <link rel="stylesheet" href="css/styles.css"></link>
+    <link rel="stylesheet" href="../css/styles.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="js/automovil.js"></script>
@@ -57,7 +57,8 @@
                                   <h:commandLink 
                                       class="btn-floating btn-large waves-effect waves-light red" 
                                       action="${automovilMBean.addCart(item)}" 
-                                      value="">
+                                      value=""
+                                      onclick="">
                                       <i class="material-icons left">add_shopping_cart</i>
                                   </h:commandLink>
                               </td>
@@ -75,7 +76,11 @@
                             </div>
                         </ui:repeat>
                     </tbody>
-                  </table>          
+                  </table>
+                <h:commandLink
+                    class="btn-floating btn-large waves-effect waves-light red btn-cart" 
+                    action="CarritoList" 
+                    value=""><i class="large material-icons">shopping_cart</i></h:commandLink>
             </h:form>
         </f:view>
         </div>

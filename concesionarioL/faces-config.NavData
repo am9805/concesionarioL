@@ -6,9 +6,10 @@
         <Node id="faces/index.xhtml" x="650" y="150" zoom="true"/>
         <Node id="pagina2.xhtml" x="400" y="150" zoom="true"/>
         <Node id="index.xhtml" x="152" y="369" zoom="true"/>
+        <Node id="CarritoList.xhtml" x="900" y="150" zoom="true"/>
         <Node id="AutomovilList.xhtml" x="216" y="184" zoom="true"/>
         <Node id="index.html" x="150" y="150" zoom="true"/>
-        <Node id="components/nav-bar.xhtml" x="471" y="327" zoom="true"/>
+        <Node id="components/nav-bar.xhtml" x="622" y="293" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
