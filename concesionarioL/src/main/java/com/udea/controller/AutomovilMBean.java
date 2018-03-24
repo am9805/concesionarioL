@@ -71,6 +71,11 @@ public class AutomovilMBean implements Serializable {
         automovil = automovilManager.update(automovil);
         return "LIST"; 
     }
+    
+    public String changeAutomovil(Automovil auto){
+        this.automovil = auto;
+        return "DetailsAutomovil";
+    }
 
     public String list() {
         System.out.println("###LIST###");
