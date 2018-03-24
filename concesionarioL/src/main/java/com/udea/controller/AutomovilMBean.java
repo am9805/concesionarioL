@@ -42,8 +42,18 @@ public class AutomovilMBean implements Serializable {
     private AutomovilManagerLocal automovilManager;
 
     private Automovil automovil;
+    private Automovil newAutomovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private String color;
+    
+    public String getColor(){
+        return color;
+    }
+    
+    public void setColor(String color){
+        this.color = color;
+    }
     
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
@@ -59,6 +69,22 @@ public class AutomovilMBean implements Serializable {
     public Automovil getAutomovil() {
         return automovil;
     }
+    
+    public String changeAutomovil(Automovil auto){
+        this.automovil = auto;
+        return "DetailsAutomovil";
+    }
+    
+    
+    public String initInsertAuto(){
+        this.automovil = new Automovil();
+        return "CreateAutomovil";
+    }
+    
+    public void saveAutomovil(){
+        System.out.println(color);
+        System.out.println("hola");
+    }
 
     public String showDetails(Automovil automovil) {
         this.automovil = automovil;
@@ -72,10 +98,7 @@ public class AutomovilMBean implements Serializable {
         return "LIST"; 
     }
     
-    public String changeAutomovil(Automovil auto){
-        this.automovil = auto;
-        return "DetailsAutomovil";
-    }
+    
 
     public String list() {
         System.out.println("###LIST###");
