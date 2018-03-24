@@ -3,12 +3,16 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="faces/AutomovilList.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="CreateAutomovil.xhtml" x="293" y="537" zoom="true"/>
         <Node id="faces/index.xhtml" x="650" y="150" zoom="true"/>
         <Node id="pagina2.xhtml" x="400" y="150" zoom="true"/>
-        <Node id="index.xhtml" x="152" y="369" zoom="true"/>
-        <Node id="AutomovilList.xhtml" x="216" y="184" zoom="true"/>
-        <Node id="index.html" x="150" y="150" zoom="true"/>
-        <Node id="components/nav-bar.xhtml" x="471" y="327" zoom="true"/>
+        <Node id="index.xhtml" x="24" y="-2" zoom="true"/>
+        <Node id="CarritoList.xhtml" x="271" y="3" zoom="true"/>
+        <Node id="AutomovilList.xhtml" x="24" y="28" zoom="true"/>
+        <Node id="DetailsAutomovil.xhtml" x="43" y="126" zoom="true"/>
+        <Node id="index.html" x="33" y="55" zoom="true"/>
+        <Node id="components/nav-bar.xhtml" x="817" y="353" zoom="true"/>
+        <Node id="faces/CarritoList.xhtml" x="130" y="251" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

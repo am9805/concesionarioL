@@ -48,10 +48,6 @@ public class AutomovilMBean implements Serializable {
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
     }
-    
-    public List<Automovil> getCarrito(){
-        return carritoDeCompras;
-    }
 
     public List<Automovil> getAutomoviles() {
         if (automoviles == null || automoviles.isEmpty()) {
@@ -69,34 +65,49 @@ public class AutomovilMBean implements Serializable {
         return "DETAILS"; // Permite enlazar a CustomerDetails.xml 
     }
 
-    /**
-     * Action handler - Actualiza el modelo Customer en la BD. Se llama cuando
-     * se presiona el boton update del formulario
-     *
-     * @return
-     */
     public String update() {
         System.out.println("###UPDATE###");
         automovil.setEnVenta(false);
         automovil = automovilManager.update(automovil);
-        return "LIST"; // Para el caso navegacional
+        return "LIST"; 
+    }
+    
+    public String changeAutomovil(Automovil auto){
+        this.automovil = auto;
+        return "DetailsAutomovil";
     }
 
-    /**
-     * Action handler - returno hacia la vista de la lista de clientes
-     *
-     * @return
-     */
     public String list() {
         System.out.println("###LIST###");
         return "LIST";
     }
     
-    public void addCart(Automovil auto){
-        this.automovil = auto;
+    public List<Automovil> getCarrito(){
+        return carritoDeCompras;
+    }
+    
+    public String carrito(){
+         System.out.println("###CARRITO###");
+        return "CARRITO";
+    }
+    
+    public boolean addCart(Automovil auto){
+        boolean control = true;
+        for (Automovil automovil : carritoDeCompras) {
+            if(automovil.getIdAutomovil() == auto.getIdAutomovil())
+            {
+                control = false;
+            }      
+        }
         System.out.println(auto.getLinea().getNombre());
-        update();
-        carritoDeCompras.add(auto);
+        if(control){
+            carritoDeCompras.add(auto);
+        }
+        return control;
+    }
+    
+    public void removeCart(Automovil auto){
+        carritoDeCompras.remove(auto);
     }
 
     private void refresh() {
