@@ -31,49 +31,68 @@
                 <div class="row">
                     <h:form class="col s12">
                     <h1>
-                        <h:outputText value="Registra un Carro" />
+                        <h:outputText value="Detalle" />
                     </h1>
                 
-                
+                    <!--
                     <div class="row">
                       <div class="input-field col s6">
-                          <h:inputText class="validate" value="${automovilMBean.automovil.color}">
+                          <h:inputText  class="validate" value="${automovilMBean.automovil.linea.nombre}">
+                          </h:inputText>
+                          <label for="first_name">Linea</label>
+                      </div>
+                      <div class="input-field col s6">
+                          <h:inputText  class="validate" value="${automovilMBean.automovil.linea.marca.nombre}">
+                              
+                          </h:inputText>
+                          <label for="first_name">Marca</label>
+                      </div>
+                    </div>
+                     -->  
+                    <div class="row">
+                      <div class="input-field col s6">
+                          <h:inputText  class="validate" value="#{automovilMBean.color}" >
                               
                           </h:inputText>
                           <label for="first_name">Color</label>
                       </div>
+                     
+                    </div>
+                    <!--    
+                   <div class="row">
                       <div class="input-field col s6">
-                          <input id="last_name" type="text" class="validate"></input>
-                        <label for="last_name">Last Name</label>
+                          <h:inputText  class="validate" value="$ ${automovilMBean.automovil.precio}">
+                          1    
+                          </h:inputText>
+                          <label for="first_name">Color</label>
+                      </div>s
+                      <div class="input-field col s6">
+                          <h:inputText class="validate" value="${automovilMBean.automovil.mesesGarantia}">
+                              
+                          </h:inputText>
+                          <label for="first_name">Colora</label>
                       </div>
                     </div>
+                    
                     <div class="row">
-                      <div class="input-field col s12">
-                        <input value="I am not editable" id="disabled" type="text" class="validate"></input>
-                        <label for="disabled">Disabled</label>
-                      </div>
+                        <div class="input-field col s6">
+                            <h:inputText disabled="true" class="validate" value="${automovilMBean.automovil.enVenta}">
+
+                            </h:inputText>
+                            <label for="first_name">En Venta</label>
+                        </div>
                     </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                          <input id="password" type="password" class="validate"></input>
-                        <label for="password">Password</label>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="input-field col s12">
-                          <input id="email" type="email" class="validate"></input>
-                        <label for="email">Email</label>
-                      </div>
-                    </div>
-                        
-                    <h:commandLink
+                      -->  
+                      <h:commandButton action="${automovilMBean.saveAutomovil()}" value="Submit"></h:commandButton>
+                    <!--<h:commandLink
                         class="btn-floating btn-large waves-effect waves-light red btn-cart" 
-                        action="CreateAutomovil" 
-                        value="#{automovilMBean}"><i class="large material-icons">send</i>
-                    </h:commandLink>
+                        action="automovilMBean_result" 
+                        value=""><i class="large material-icons">send</i>
+                    </h:commandLink>-->
                 </h:form>
             </div>
         </f:view>
+            
         </div>
     </h:body>
 </html>
