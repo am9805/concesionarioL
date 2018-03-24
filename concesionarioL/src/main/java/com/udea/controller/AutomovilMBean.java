@@ -44,6 +44,7 @@ public class AutomovilMBean implements Serializable {
     private Automovil automovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private int total;
     
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
@@ -89,6 +90,15 @@ public class AutomovilMBean implements Serializable {
     public String carrito(){
          System.out.println("###CARRITO###");
         return "CARRITO";
+    }
+    
+    public int total(){
+        this.total = 0;
+        for(Automovil automovil : carritoDeCompras){
+            System.out.print(automovil.getPrecio());
+            total = total + automovil.getPrecio();
+        }
+        return total;
     }
     
     public boolean addCart(Automovil auto){
