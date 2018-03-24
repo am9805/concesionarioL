@@ -32,5 +32,20 @@
             <from-outcome>CARRITO</from-outcome>
             <to-view-id>/faces/CarritoList.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE</from-outcome>
+            <to-view-id>/CreateAutomovil.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>DETAILS</from-outcome>
+            <to-view-id>/DetailsAutomovil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/faces/CarritoList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>DETAILS</from-outcome>
+            <to-view-id>/DetailsAutomovil.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
 </faces-config>
