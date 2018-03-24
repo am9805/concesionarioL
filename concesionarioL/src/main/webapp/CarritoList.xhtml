@@ -41,7 +41,8 @@
                           <th>Cilindraje</th>
                           <th>Precio</th>
                           <th>QR</th>
-                          <th>Comprar</th>
+                          <th>Detalle</th>
+                          <th>Eliminar</th>
                       </tr>
                     </thead>
 
@@ -53,6 +54,14 @@
                               <td>#{item.cilindraje}</td>
                               <td>#{item.precio}</td>
                               <td><a class="waves-effect waves-light btn modal-trigger" onclick="showModal('#{item.idAutomovil}modal')">Modal</a></td>
+                              <td>
+                                  <h:commandLink 
+                                      class="btn-floating btn-largewaves-effect waves-light" 
+                                      action="${automovilMBean.changeAutomovil(item)}" 
+                                      value="">
+                                      <i class="material-icons left">details</i>
+                                  </h:commandLink>
+                              </td>
                               <td>
                                   <h:commandLink 
                                       class="btn-floating btn-large waves-effect waves-light red" 
