@@ -45,6 +45,15 @@ public class AutomovilMBean implements Serializable {
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
     private int total;
+    private String comprador;
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
     
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
@@ -70,6 +79,7 @@ public class AutomovilMBean implements Serializable {
         System.out.println("###UPDATE###");
         automovil.setEnVenta(false);
         automovil = automovilManager.update(automovil);
+        
         return "LIST"; 
     }
     
@@ -118,6 +128,10 @@ public class AutomovilMBean implements Serializable {
     
     public void removeCart(Automovil auto){
         carritoDeCompras.remove(auto);
+        
+    }
+    public void comprar(){
+        System.out.println(comprador);
     }
 
     private void refresh() {
