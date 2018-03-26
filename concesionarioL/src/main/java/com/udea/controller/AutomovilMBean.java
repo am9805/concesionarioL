@@ -105,7 +105,7 @@ public class AutomovilMBean implements Serializable {
     public int total(){
         this.total = 0;
         for(Automovil automovil : carritoDeCompras){
-            System.out.print(automovil.getPrecio());
+            //System.out.print(automovil.getPrecio());
             total = total + automovil.getPrecio();
         }
         return total;

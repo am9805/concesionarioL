@@ -6,7 +6,8 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="concesionariobd"/>
         <property name="User" value="root"/>
-        <property name="Password" value=""/>
+        <!--<property name="Password" value=""/>-->
+        <property name="Password" value="david123"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/concesionariobd?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
