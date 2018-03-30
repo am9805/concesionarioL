@@ -30,9 +30,9 @@
             <f:view>
                 <div class="row">
                     <h:form class="col s12">
-                        <h1>
-                            <h:outputText value="Detalle" />
-                        </h1>
+                        <h3>
+                            <h:outputText value="Registro automoviles" />
+                        </h3>
 
 
 
@@ -105,8 +105,15 @@
 
                             </div>
                         </div>
+                        
+                        <div class="div-btn-submit">
+                            <h:commandButton class="btn-submit" 
+                                         action="${automovilMBean.saveAutomovil()}"
+                                         value="Submit">
+                            </h:commandButton>
+                            <i class="material-icons left icon-btn">send</i>
+                        </div>
 
-                        <h:commandButton id="createsubmit" action="${automovilMBean.saveAutomovil()}" value="Submit"></h:commandButton>
                         <!--<h:commandLink
                             class="btn-floating btn-large waves-effect waves-light red btn-cart" 
                             action="${automovilMBean.saveAutomovil()}" onclick="submit()"
