@@ -33,4 +33,16 @@ public class AutomovilManager implements AutomovilManagerLocal {
         return em.merge(automovil);
     }
 
+    @Override
+    public Boolean insert(Automovil automovil) {
+        try {
+            em.merge(automovil);
+        return true;
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            return false;
+        }
+        
+    }
+
 }

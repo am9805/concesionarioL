@@ -33,5 +33,11 @@ public class MarcaManager implements MarcaManagerLocal {
         return em.merge(marca);
     }
 
+    @Override
+    public Marca findById(Integer marca) {
+        Query query = em.createNamedQuery("Marca.findByIdMarca").setParameter("idMarca", marca);
+        return (Marca) query.getSingleResult();
+    }
+
    
 }
