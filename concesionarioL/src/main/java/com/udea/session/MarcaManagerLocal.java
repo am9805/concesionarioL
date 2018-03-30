@@ -19,5 +19,7 @@ public interface MarcaManagerLocal {
     List<Marca> getAllMarcas();
 
     Marca update(Marca marca);
+
+    Marca findById(Integer marca);
     
 }

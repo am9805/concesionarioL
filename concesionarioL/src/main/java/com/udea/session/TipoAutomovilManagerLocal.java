@@ -19,5 +19,7 @@ public interface TipoAutomovilManagerLocal {
     List<Tipoautomovil> getAllTipoAutomovil();
 
     Tipoautomovil update(Tipoautomovil tipoAutomovil);
+
+    Tipoautomovil findById(Integer tipo);
     
 }

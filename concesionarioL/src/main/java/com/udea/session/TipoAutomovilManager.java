@@ -33,5 +33,11 @@ public class TipoAutomovilManager implements TipoAutomovilManagerLocal {
         return em.merge(tipoAutomovil);
     }
 
+    @Override
+    public Tipoautomovil findById(Integer tipo) {
+        Query query = em.createNamedQuery("Tipoautomovil.findByIdTipo").setParameter("idTipo", tipo);
+        return (Tipoautomovil) query.getSingleResult();
+    }
+
     
 }
