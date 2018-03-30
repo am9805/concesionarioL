@@ -114,17 +114,15 @@
                         action="AutomovilList">
                         <i class="material-icons left">keyboard_arrow_left</i>
                     </h:commandLink>
-                    <h:commandLink 
-                        class="btn-floating btn-large waves-effect waves-light red btn-cart" 
-                        action="${automovilMBean.comprar()}">
-                        <i class="material-icons left">attach_money</i>
-                    </h:commandLink>
                     
-                    <h:commandButton class="btn-submit" 
+                    <div class="div-btn-submit">
+                        <h:commandButton class="btn-submit" 
                                      action="${automovilMBean.comprar()}" 
                                      value="Submit">
-                        <i class="material-icons left">attach_money</i>
-                    </h:commandButton>
+                        </h:commandButton>
+                        <i class="material-icons left icon-btn">attach_money</i>
+                    </div>
+                    
                 </h:form>
             </f:view>
         </div>
