@@ -6,6 +6,7 @@
 package com.udea.session;
 
 import com.udea.entity.Linea;
+import com.udea.entity.Marca;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -30,5 +31,18 @@ public class LineaManager implements LineaManagerLocal {
     @Override
     public Linea update(Linea linea) {
         return em.merge(linea);
+    }
+
+    @Override
+    public List<Linea> findAllByIdMarca(Marca id) {
+        Query query = em.createNamedQuery("Linea.findByIdMarca").setParameter("marca", id);
+                
+        return query.getResultList();
+    }
+
+    @Override
+    public Linea findById(Integer id) {
+        Query query = em.createNamedQuery("Linea.findByIdLinea").setParameter("idLinea", id);
+        return (Linea) query.getSingleResult();
     }
 }

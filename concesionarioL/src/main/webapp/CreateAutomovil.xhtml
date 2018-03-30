@@ -5,14 +5,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"></link>
-    <link rel="stylesheet" href="../css/styles.css"></link>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="js/automovil.js"></script>
-    
+    <link rel="stylesheet" href="../css/styles.css"></link>
+    <script src="../js/automovil.js"></script>
+
+
     <style type="text/css">
         .old{
             background-color: #6CE26C !important;
@@ -26,73 +26,97 @@
     <h:body>
         <ui:include src="components/nav-bar.xhtml" />
         <div class="container">
-            
+
             <f:view>
                 <div class="row">
                     <h:form class="col s12">
-                    <h1>
-                        <h:outputText value="Detalle" />
-                    </h1>
-                
-                    <!--
-                    <div class="row">
-                      <div class="input-field col s6">
-                          <h:inputText  class="validate" value="${automovilMBean.automovil.linea.nombre}">
-                          </h:inputText>
-                          <label for="first_name">Linea</label>
-                      </div>
-                      <div class="input-field col s6">
-                          <h:inputText  class="validate" value="${automovilMBean.automovil.linea.marca.nombre}">
-                              
-                          </h:inputText>
-                          <label for="first_name">Marca</label>
-                      </div>
-                    </div>
-                     -->  
-                    <div class="row">
-                      <div class="input-field col s6">
-                          <h:inputText  class="validate" value="#{automovilMBean.color}" >
-                              
-                          </h:inputText>
-                          <label for="first_name">Color</label>
-                      </div>
-                     
-                    </div>
-                    <!--    
-                   <div class="row">
-                      <div class="input-field col s6">
-                          <h:inputText  class="validate" value="$ ${automovilMBean.automovil.precio}">
-                          1    
-                          </h:inputText>
-                          <label for="first_name">Color</label>
-                      </div>s
-                      <div class="input-field col s6">
-                          <h:inputText class="validate" value="${automovilMBean.automovil.mesesGarantia}">
-                              
-                          </h:inputText>
-                          <label for="first_name">Colora</label>
-                      </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <h:inputText disabled="true" class="validate" value="${automovilMBean.automovil.enVenta}">
+                        <h1>
+                            <h:outputText value="Detalle" />
+                        </h1>
 
-                            </h:inputText>
-                            <label for="first_name">En Venta</label>
+
+
+                        <div class="row">
+                            <div class="col s6">
+
+                                <h:selectOneMenu id="createMarca" value="#{automovilMBean.marca}" style="display: block;" onchange="submit()">
+                                    <f:selectItem itemValue="#{null}" itemLabel="- selecione una linea -"></f:selectItem>
+                                    <f:selectItems value="${automovilMBean.marcas}" var="item" itemValue="#{item.idMarca}" itemLabel="#{item.nombre}" />
+                                </h:selectOneMenu>
+                                <label for="first_name">Marca</label>
+                            </div>
+
+                            <div class="col s6">
+                                <h:selectOneMenu id="createLinea" value="#{automovilMBean.linea}" style="display: block;" onchange="submit()">
+                                    <f:selectItem itemValue="#{null}" itemLabel="- selecione una linea -"></f:selectItem>
+                                    <f:selectItems value="${automovilMBean.lineas}" var="item" itemValue="#{item.idLinea}" itemLabel="#{item.nombre}" />
+                                </h:selectOneMenu>
+                                <label for="first_name">Linea</label>
+                            </div>
                         </div>
-                    </div>
-                      -->  
-                      <h:commandButton action="${automovilMBean.saveAutomovil()}" value="Submit"></h:commandButton>
-                    <!--<h:commandLink
-                        class="btn-floating btn-large waves-effect waves-light red btn-cart" 
-                        action="automovilMBean_result" 
-                        value=""><i class="large material-icons">send</i>
-                    </h:commandLink>-->
-                </h:form>
-            </div>
-        </f:view>
-            
+
+                        <div class="row">
+                            <div class="col s6">
+
+                                <h:selectOneMenu id="createTipo" value="#{automovilMBean.tipo}" style="display: block;" onchange="submit()">
+                                    <f:selectItem itemValue="#{null}" itemLabel="- selecione una linea -"></f:selectItem>
+                                    <f:selectItems value="${automovilMBean.tipos}" var="item" itemValue="#{item.idTipo}" itemLabel="#{item.nombre}" />
+                                </h:selectOneMenu>
+                                <label for="first_name">Tipo</label>
+                            </div>               
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <h:inputText id="createColor" onchange="cambiaInputCreate()" class="validate" value="#{automovilMBean.color}">
+
+                                </h:inputText>
+                                <label for="first_name">Color</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <h:inputText id="createCilindraje" onchange="cambiaInputCreate()" class="validate" value="#{automovilMBean.cilindraje}">
+
+                                </h:inputText>
+                                <label for="first_name">Cilindraje</label>
+                            </div>  
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <h:inputText id="createPrecio" class="validate" value="#{automovilMBean.precio}">
+                                    1    
+                                </h:inputText>
+                                <label for="first_name">Precio</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <h:inputText id="createGarantia" class="validate" value="#{automovilMBean.mesesGarantia}">
+
+                                </h:inputText>
+                                <label for="first_name">Garantia (Meses)</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s6">
+                                <h:selectBooleanCheckbox value="#{automovilMBean.enVenta}" 
+                                                         style="position: relative; opacity: 1; pointer-events: all;">
+                                    En Venta
+                                </h:selectBooleanCheckbox>
+
+                            </div>
+                        </div>
+
+                        <h:commandButton id="createsubmit" action="${automovilMBean.saveAutomovil()}" value="Submit"></h:commandButton>
+                        <!--<h:commandLink
+                            class="btn-floating btn-large waves-effect waves-light red btn-cart" 
+                            action="${automovilMBean.saveAutomovil()}" onclick="submit()"
+                            value="submit"><i class="large material-icons">send</i>
+                        </h:commandLink>-->
+                        #{automovilMBean.errorCreate}
+                    </h:form>
+                </div>
+            </f:view>
+
         </div>
     </h:body>
 </html>

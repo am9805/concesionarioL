@@ -6,6 +6,7 @@
 package com.udea.session;
 
 import com.udea.entity.Linea;
+import com.udea.entity.Marca;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,6 +18,10 @@ import javax.ejb.Local;
 public interface LineaManagerLocal {
 
     List<Linea> getAllLineas();
+    
+    List<Linea> findAllByIdMarca(Marca id);
+    
+    Linea findById(Integer id);
 
     Linea update(Linea linea);
     

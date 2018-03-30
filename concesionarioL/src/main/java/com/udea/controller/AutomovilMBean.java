@@ -5,7 +5,9 @@
  */
 package com.udea.controller;
 
-import com.udea.entity.Automovil;
+import com.udea.entity.*;
+import com.udea.entity.Linea;
+import com.udea.entity.Marca;
 import com.udea.session.AutomovilManagerLocal;
 import com.udea.session.FacturaManagerLocal;
 import com.udea.session.LineaManagerLocal;
@@ -45,7 +47,19 @@ public class AutomovilMBean implements Serializable {
     private Automovil newAutomovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private List<Marca> marcas;
+    private List<Linea> lineas;
+    private List<Tipoautomovil> tipos;
+    /*atributos para crear el automovil*/
+    private Integer linea;
     private String color;
+    private Integer tipo;
+    private Integer cilindraje;
+    private Integer marca;
+    private String precio;
+    private String mesesGarantia;
+    private boolean enVenta;
+    private String errorCreate;
     
     public String getColor(){
         return color;
@@ -53,6 +67,99 @@ public class AutomovilMBean implements Serializable {
     
     public void setColor(String color){
         this.color = color;
+    }
+
+    public Integer getLinea() {
+        return linea;
+    }
+
+    public void setLinea(Integer linea) {
+        this.linea = linea;
+    }
+
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public String getMesesGarantia() {
+        return mesesGarantia;
+    }
+
+    public void setMesesGarantia(String mesesGarantia) {
+        this.mesesGarantia = mesesGarantia;
+    }
+
+    public boolean isEnVenta() {
+        return enVenta;
+    }
+
+    public void setEnVenta(boolean enVenta) {
+        this.enVenta = enVenta;
+    }
+
+    public Integer getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Integer marca) {
+        this.marca = marca;
+    }
+
+    public Integer getCilindraje() {
+        return cilindraje;
+    }
+
+    public void setCilindraje(Integer cilindraje) {
+        this.cilindraje = cilindraje;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getErrorCreate() {
+        return errorCreate;
+    }
+
+    public void setErrorCreate(String errorCreate) {
+        this.errorCreate = errorCreate;
+    }
+    
+    
+    public List<Tipoautomovil> getTipos(){
+         if (tipos == null || tipos.isEmpty()) {
+            tipos = tipoAutomovilManager.getAllTipoAutomovil();
+        }
+        
+        return tipos;
+    }
+    
+    public List<Marca> getMarcas(){
+        if (marcas == null || marcas.isEmpty()) {
+            marcas = marcaManager.getAllMarcas();
+        }
+        
+        return marcas;
+    }
+    
+    public List<Linea> getLineas(){
+        if (marca != null) {
+            lineas = lineaManager.findAllByIdMarca(marcaManager.findById(marca));
+            //System.out.println("se piden lineas******************"+marca+lineas.toString());
+        }
+        else{
+            if(lineas != null) lineas.clear();
+        }
+        
+        return lineas;
     }
     
     public AutomovilMBean() {
@@ -82,8 +189,38 @@ public class AutomovilMBean implements Serializable {
     }
     
     public void saveAutomovil(){
-        System.out.println(color);
-        System.out.println("hola");
+        this.errorCreate = "";
+        Linea lineaAuto = null;
+        Tipoautomovil tipoAutomovil = null;
+        
+        if(linea != null){
+            lineaAuto = lineaManager.findById(linea);
+            System.out.println(lineaAuto.getNombre());
+        }
+        if(tipo != null){
+            tipoAutomovil = tipoAutomovilManager.findById(tipo);
+            System.out.println(tipoAutomovil.getNombre());
+        }
+
+        if(lineaAuto != null && tipoAutomovil != null && color != null && mesesGarantia != null
+                && precio != null && cilindraje != null){
+            Automovil auto = new Automovil();
+            auto.setLinea(lineaAuto);
+            auto.setTipoAutomovil(tipoAutomovil);
+            auto.setColor(color);
+            auto.setMesesGarantia(Integer.parseInt(mesesGarantia));
+            auto.setCilindraje(cilindraje);
+            auto.setPrecio(Integer.parseInt(precio));
+            auto.setIdAutomovil(3);
+            auto.setFoto(null);
+            
+            System.out.println(auto.toString());
+            automovilManager.insert(auto);
+        }
+        else{
+            errorCreate = "Validar la información";
+        }
+        
     }
 
     public String showDetails(Automovil automovil) {

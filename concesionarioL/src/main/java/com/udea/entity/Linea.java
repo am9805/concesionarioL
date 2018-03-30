@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Linea.findAll", query = "SELECT l FROM Linea l")
     , @NamedQuery(name = "Linea.findByIdLinea", query = "SELECT l FROM Linea l WHERE l.idLinea = :idLinea")
+    , @NamedQuery(name = "Linea.findByIdMarca", query = "SELECT l FROM Linea l WHERE l.marca = :marca")
     , @NamedQuery(name = "Linea.findByNombre", query = "SELECT l FROM Linea l WHERE l.nombre = :nombre")})
 public class Linea implements Serializable {
 

@@ -3,6 +3,7 @@
   <persistence-unit name="com.udea_concesionarioL_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>java:app/concesionario</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <validation-mode>CALLBACK</validation-mode>
     <properties/>
   </persistence-unit>
 </persistence>
