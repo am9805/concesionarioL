@@ -19,5 +19,7 @@ public interface VentaManagerLocal {
     List<Venta> getAllVentas();
 
     Venta update(Venta venta);
+
+    boolean insert(Venta venta);
     
 }

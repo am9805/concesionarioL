@@ -30,7 +30,12 @@ public class AutomovilManager implements AutomovilManagerLocal {
     
     @Override
     public Automovil update(Automovil automovil) {
-        return em.merge(automovil);
+        try {
+            return em.merge(automovil);
+        } catch (Exception e) {
+            System.err.println("AUTOMOVIL ERROR: " + e.toString());
+            return null;
+        }
     }
 
     @Override

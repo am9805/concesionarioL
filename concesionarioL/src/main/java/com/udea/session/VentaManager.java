@@ -33,5 +33,16 @@ public class VentaManager implements VentaManagerLocal {
         return em.merge(venta);
     }
 
+    @Override
+    public boolean insert(Venta venta) {
+        try {
+            em.merge(venta);
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            return false;
+        }
+    }
+
 
 }

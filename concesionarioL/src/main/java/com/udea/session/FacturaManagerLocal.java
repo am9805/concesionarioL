@@ -17,7 +17,11 @@ import javax.ejb.Local;
 public interface FacturaManagerLocal {
 
     List<Factura> getAllFacturas();
+    
+    Factura findByNumeroFactura(Integer numeroFactura);
 
     Factura update(Factura factura);
+
+    boolean insert(Factura factura);
     
 }

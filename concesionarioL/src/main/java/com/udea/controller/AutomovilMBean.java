@@ -15,7 +15,10 @@ import com.udea.session.MarcaManagerLocal;
 import com.udea.session.TipoAutomovilManagerLocal;
 import com.udea.session.VentaManagerLocal;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -49,6 +52,7 @@ public class AutomovilMBean implements Serializable {
     private List<Automovil> carritoDeCompras;
     private int total;
     private String comprador;
+    private String idCliente;
     private List<Marca> marcas;
     private List<Linea> lineas;
     private List<Tipoautomovil> tipos;
@@ -141,6 +145,14 @@ public class AutomovilMBean implements Serializable {
 
     public String getComprador() {
         return comprador;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
     }
     
     
@@ -317,7 +329,49 @@ public class AutomovilMBean implements Serializable {
         
     }
     public void comprar(){
-        System.out.println(comprador);
+        List<Factura> facturas = facturaManager.getAllFacturas();
+        Integer numeroFactura = 0;
+        for (Factura factura : facturas){
+            if(factura.getNumeroFactura() > numeroFactura){
+                numeroFactura = factura.getNumeroFactura();
+            }
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+        Factura factura = new Factura(numeroFactura+1);
+        factura.setIdCliente(Integer.parseInt(idCliente));
+        factura.setNombreCliente(comprador);
+        factura.setPrecio(total);
+        factura.setFecha(date);
+        
+        if(facturaManager.insert(factura)){
+            System.out.println("Factura "+String.valueOf(factura.getNumeroFactura())+" insertada");
+            
+            for (Automovil auto : carritoDeCompras) {
+                //actualiza la foto y actualiza si está en venta
+                auto.setFoto(new byte[1]);
+                auto.setEnVenta(false);
+                //
+                List<Venta> ventas = ventaManager.getAllVentas();
+                Integer idVenta = 0;
+                for (Venta venta : ventas) {
+                    if(idVenta<venta.getIdVenta()){ 
+                        idVenta = venta.getIdVenta();
+                    }
+                }
+                Venta venta = new Venta(idVenta+1);
+                venta.setAutomovil(auto);
+                venta.setNumeroFactura(factura);
+                
+                if(ventaManager.insert(venta)){
+                    System.out.println("venta " + String.valueOf(venta.getIdVenta()) + " insertada");
+                }
+                automovilManager.update(auto);
+            }
+            comprador = null;
+            idCliente = null;
+            carritoDeCompras.clear();
+        }
     }
 
     private void refresh() {

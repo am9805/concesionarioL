@@ -44,11 +44,16 @@
                     </div>
                     
                      <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s8">
                             <h:inputText required="true" class="validate" value="#{automovilMBean.comprador}">
                             </h:inputText>
                             <label for="first_name">Comprador</label>
-                        </div>                        
+                        </div>
+                         <div class="input-field col s4">
+                            <h:inputText required="true" class="validate" value="#{automovilMBean.idCliente}">
+                            </h:inputText>
+                            <label for="first_name">Identificación</label>
+                        </div> 
                     </div>
 
                     <table>
@@ -115,7 +120,11 @@
                         <i class="material-icons left">attach_money</i>
                     </h:commandLink>
                     
-                    <h:commandButton action="${automovilMBean.comprar()}" value="Submit"></h:commandButton>
+                    <h:commandButton class="btn-submit" 
+                                     action="${automovilMBean.comprar()}" 
+                                     value="Submit">
+                        <i class="material-icons left">attach_money</i>
+                    </h:commandButton>
                 </h:form>
             </f:view>
         </div>
