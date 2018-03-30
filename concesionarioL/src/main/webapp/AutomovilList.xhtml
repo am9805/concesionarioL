@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"></link>
@@ -63,13 +64,16 @@
                                   </h:commandLink>
                               </td>
                               <td>
-                                  <h:commandLink 
-                                      class="btn-floating btn-large waves-effect waves-light red" 
-                                      action="${automovilMBean.addCart(item)}" 
-                                      value=""
-                                      onclick="">
-                                      <i class="material-icons left">add_shopping_cart</i>
-                                  </h:commandLink>
+                                    <h:panelGroup rendered="#{item.enVenta}">
+                                        <h:commandLink 
+                                            class="btn-floating btn-large waves-effect waves-light red" 
+                                            action="${automovilMBean.addCart(item)}" 
+                                            value=""
+                                            onclick="">
+                                            <i class="material-icons left">add_shopping_cart</i>
+                                        </h:commandLink>
+                                    </h:panelGroup>
+                                  
                               </td>
                             </tr>
                             <div id="#{item.idAutomovil}modal" class="modal" style="width: 500px;">

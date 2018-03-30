@@ -220,6 +220,7 @@ public class AutomovilMBean implements Serializable {
             auto.setColor(color);
             auto.setMesesGarantia(Integer.parseInt(mesesGarantia));
             auto.setCilindraje(cilindraje);
+            auto.setEnVenta(enVenta);
             auto.setPrecio(Integer.parseInt(precio));
             auto.setIdAutomovil(id+1);
             auto.setFoto(new byte[1]);
