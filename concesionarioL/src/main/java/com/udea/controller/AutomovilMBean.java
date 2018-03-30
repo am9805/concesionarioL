@@ -47,6 +47,8 @@ public class AutomovilMBean implements Serializable {
     private Automovil newAutomovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private int total;
+    private String comprador;
     private List<Marca> marcas;
     private List<Linea> lineas;
     private List<Tipoautomovil> tipos;
@@ -132,6 +134,14 @@ public class AutomovilMBean implements Serializable {
     public void setErrorCreate(String errorCreate) {
         this.errorCreate = errorCreate;
     }
+  
+     public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
     
     
     public List<Tipoautomovil> getTipos(){
@@ -160,6 +170,7 @@ public class AutomovilMBean implements Serializable {
         }
         
         return lineas;
+
     }
     
     public AutomovilMBean() {
@@ -257,6 +268,7 @@ public class AutomovilMBean implements Serializable {
         System.out.println("###UPDATE###");
         automovil.setEnVenta(false);
         automovil = automovilManager.update(automovil);
+        
         return "LIST"; 
     }
     
@@ -276,6 +288,15 @@ public class AutomovilMBean implements Serializable {
         return "CARRITO";
     }
     
+    public int total(){
+        this.total = 0;
+        for(Automovil automovil : carritoDeCompras){
+            //System.out.print(automovil.getPrecio());
+            total = total + automovil.getPrecio();
+        }
+        return total;
+    }
+    
     public boolean addCart(Automovil auto){
         boolean control = true;
         for (Automovil automovil : carritoDeCompras) {
@@ -293,6 +314,10 @@ public class AutomovilMBean implements Serializable {
     
     public void removeCart(Automovil auto){
         carritoDeCompras.remove(auto);
+        
+    }
+    public void comprar(){
+        System.out.println(comprador);
     }
 
     private void refresh() {
