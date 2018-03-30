@@ -50,6 +50,8 @@ public class AutomovilMBean implements Serializable {
     private Automovil newAutomovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private Factura factura;
+    private List<Factura> facturas;
     private int total;
     private String comprador;
     private String idCliente;
@@ -155,7 +157,6 @@ public class AutomovilMBean implements Serializable {
         this.idCliente = idCliente;
     }
     
-    
     public List<Tipoautomovil> getTipos(){
          if (tipos == null || tipos.isEmpty()) {
             tipos = tipoAutomovilManager.getAllTipoAutomovil();
@@ -185,6 +186,11 @@ public class AutomovilMBean implements Serializable {
 
     }
     
+    public List<Factura> getFacturas(){
+        facturas = facturaManager.getAllFacturas();
+        return facturas;
+    }
+    
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
     }
@@ -203,6 +209,11 @@ public class AutomovilMBean implements Serializable {
     public String changeAutomovil(Automovil auto){
         this.automovil = auto;
         return "DetailsAutomovil";
+    }
+    
+    public String detalleFactura(Factura factura){
+        this.factura = factura;
+        return "DetalleFactura";
     }
     
     
