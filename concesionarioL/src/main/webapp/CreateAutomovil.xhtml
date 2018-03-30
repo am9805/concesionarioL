@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col s6">
-                                <h:selectOneMenu id="createLinea" value="#{automovilMBean.linea}" style="display: block;" onchange="submit()">
+                                <h:selectOneMenu id="createLinea" value="#{automovilMBean.linea}" style="display: block;">
                                     <f:selectItem itemValue="#{null}" itemLabel="- selecione una linea -"></f:selectItem>
                                     <f:selectItems value="${automovilMBean.lineas}" var="item" itemValue="#{item.idLinea}" itemLabel="#{item.nombre}" />
                                 </h:selectOneMenu>
@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col s6">
 
-                                <h:selectOneMenu id="createTipo" value="#{automovilMBean.tipo}" style="display: block;" onchange="submit()">
+                                <h:selectOneMenu id="createTipo" value="#{automovilMBean.tipo}" style="display: block;">
                                     <f:selectItem itemValue="#{null}" itemLabel="- selecione una linea -"></f:selectItem>
                                     <f:selectItems value="${automovilMBean.tipos}" var="item" itemValue="#{item.idTipo}" itemLabel="#{item.nombre}" />
                                 </h:selectOneMenu>

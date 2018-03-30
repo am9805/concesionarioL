@@ -170,6 +170,7 @@ public class AutomovilMBean implements Serializable {
         if (automoviles == null || automoviles.isEmpty()) {
             refresh();
         }
+            refresh();
         return automoviles;
     }
     
@@ -193,6 +194,8 @@ public class AutomovilMBean implements Serializable {
         Linea lineaAuto = null;
         Tipoautomovil tipoAutomovil = null;
         
+        refresh();
+        
         if(linea != null){
             lineaAuto = lineaManager.findById(linea);
             System.out.println(lineaAuto.getNombre());
@@ -204,6 +207,14 @@ public class AutomovilMBean implements Serializable {
 
         if(lineaAuto != null && tipoAutomovil != null && color != null && mesesGarantia != null
                 && precio != null && cilindraje != null){
+            Integer id = 0;
+            for (Automovil a : automoviles) {
+                if(id < a.getIdAutomovil())
+                {
+                    id = a.getIdAutomovil();
+                }
+                
+            }
             Automovil auto = new Automovil();
             auto.setLinea(lineaAuto);
             auto.setTipoAutomovil(tipoAutomovil);
@@ -211,16 +222,29 @@ public class AutomovilMBean implements Serializable {
             auto.setMesesGarantia(Integer.parseInt(mesesGarantia));
             auto.setCilindraje(cilindraje);
             auto.setPrecio(Integer.parseInt(precio));
-            auto.setIdAutomovil(3);
-            auto.setFoto(null);
+            auto.setIdAutomovil(id+1);
+            auto.setFoto(new byte[1]);
             
             System.out.println(auto.toString());
-            automovilManager.insert(auto);
+            if(automovilManager.insert(auto)){
+               errorCreate = "insertado correctamente";
+               clearAutomovilAtributos();
+            }
         }
         else{
-            errorCreate = "Validar la información";
+            //errorCreate = "Validar la información";
         }
         
+    }
+    
+    private void clearAutomovilAtributos(){
+        color = null;
+        mesesGarantia=null;
+        cilindraje = null;
+        precio = null;
+        linea = null;
+        marca = null;
+        enVenta = false;
     }
 
     public String showDetails(Automovil automovil) {
