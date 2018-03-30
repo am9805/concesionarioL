@@ -170,7 +170,6 @@ public class AutomovilMBean implements Serializable {
         if (automoviles == null || automoviles.isEmpty()) {
             refresh();
         }
-            refresh();
         return automoviles;
     }
     
@@ -229,6 +228,7 @@ public class AutomovilMBean implements Serializable {
             if(automovilManager.insert(auto)){
                errorCreate = "insertado correctamente";
                clearAutomovilAtributos();
+               refresh();
             }
         }
         else{
