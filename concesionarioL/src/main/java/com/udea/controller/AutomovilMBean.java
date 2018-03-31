@@ -58,6 +58,7 @@ public class AutomovilMBean implements Serializable {
     private List<Marca> marcas;
     private List<Linea> lineas;
     private List<Tipoautomovil> tipos;
+    private List<Venta> ventas;
     /*atributos para crear el automovil*/
     private Integer linea;
     private String color;
@@ -156,7 +157,11 @@ public class AutomovilMBean implements Serializable {
     public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
-    
+
+    public Factura getFactura() {
+        return factura;
+    }
+        
     public List<Tipoautomovil> getTipos(){
          if (tipos == null || tipos.isEmpty()) {
             tipos = tipoAutomovilManager.getAllTipoAutomovil();
@@ -191,6 +196,13 @@ public class AutomovilMBean implements Serializable {
         return facturas;
     }
     
+    public List<Venta> getVentas(){
+        if(factura != null){
+            ventas = ventaManager.findByNumeroFactura(factura);
+        }
+        return ventas;
+    }
+    
     public AutomovilMBean() {
         carritoDeCompras = new ArrayList<Automovil>();
     }
@@ -212,7 +224,10 @@ public class AutomovilMBean implements Serializable {
     }
     
     public String detalleFactura(Factura factura){
+        
         this.factura = factura;
+        //this.ventas = ventaManager.findByNumeroFactura(factura.getNumeroFactura());
+        System.out.println(factura.getNombreCliente());
         return "DetalleFactura";
     }
     

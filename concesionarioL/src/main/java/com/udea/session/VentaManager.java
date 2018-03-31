@@ -5,6 +5,7 @@
  */
 package com.udea.session;
 
+import com.udea.entity.Factura;
 import com.udea.entity.Venta;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -42,6 +43,12 @@ public class VentaManager implements VentaManagerLocal {
             System.err.println(e.toString());
             return false;
         }
+    }
+
+    @Override
+    public List<Venta> findByNumeroFactura(Factura factura) {
+        Query query = em.createNamedQuery("Venta.findByNumeroFactura").setParameter("numeroFactura", factura);
+        return query.getResultList();
     }
 
 

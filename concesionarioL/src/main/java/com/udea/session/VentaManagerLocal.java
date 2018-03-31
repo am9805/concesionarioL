@@ -5,7 +5,7 @@
  */
 package com.udea.session;
 
-import com.udea.entity.Venta;
+import com.udea.entity.*;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -17,6 +17,8 @@ import javax.ejb.Local;
 public interface VentaManagerLocal {
 
     List<Venta> getAllVentas();
+    
+    List<Venta> findByNumeroFactura(Factura factura);
 
     Venta update(Venta venta);
 

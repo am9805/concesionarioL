@@ -4,6 +4,19 @@ body{
     background-image: url('../assets/img/background.jpg');
 }
 
+nav{
+    background-color: #795548;
+    
+}
+
+.btn-floating{
+    background-color: #a98274;
+}
+
+.red{
+    background-color:  #4b2c20 !important;
+}
+
 .btn-cart{
     position: absolute;
     bottom: 10px;
