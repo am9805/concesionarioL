@@ -35,4 +35,21 @@ public class FacturaManager implements FacturaManagerLocal {
         return em.merge(factura);
     }
 
+    @Override
+    public boolean insert(Factura factura) {
+        try {
+            em.merge(factura);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
+
+    @Override
+    public Factura findByNumeroFactura(Integer numeroFactura) {
+        Query query = em.createNamedQuery("Factura.findByNumeroFactura").setParameter("numeroFactura", numeroFactura);
+        return (Factura) query.getSingleResult();
+    }
+
 }

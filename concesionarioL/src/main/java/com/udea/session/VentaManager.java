@@ -5,6 +5,7 @@
  */
 package com.udea.session;
 
+import com.udea.entity.Factura;
 import com.udea.entity.Venta;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -31,6 +32,23 @@ public class VentaManager implements VentaManagerLocal {
     @Override
     public Venta update(Venta venta) {
         return em.merge(venta);
+    }
+
+    @Override
+    public boolean insert(Venta venta) {
+        try {
+            em.merge(venta);
+            return true;
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Venta> findByNumeroFactura(Factura factura) {
+        Query query = em.createNamedQuery("Venta.findByNumeroFactura").setParameter("numeroFactura", factura);
+        return query.getResultList();
     }
 
 

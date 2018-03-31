@@ -8,4 +8,48 @@
         <managed-bean-class>com.udea.controller.AutomovilMBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <navigation-rule>
+        <from-view-id>faces/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>LIST</from-outcome>
+            <to-view-id>faces/AutomovilList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>PAGINA2</from-outcome>
+            <to-view-id>/pagina2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Ventas</from-outcome>
+            <to-view-id>/Ventas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/components/nav-bar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>LIST</from-outcome>
+            <to-view-id>/faces/AutomovilList.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/faces/AutomovilList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>CARRITO</from-outcome>
+            <to-view-id>/faces/CarritoList.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>CREATE</from-outcome>
+            <to-view-id>/CreateAutomovil.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>DETAILS</from-outcome>
+            <to-view-id>/DetailsAutomovil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/faces/CarritoList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>DETAILS</from-outcome>
+            <to-view-id>/DetailsAutomovil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

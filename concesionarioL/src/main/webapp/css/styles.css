@@ -3,3 +3,54 @@ body{
     height: 100%;
     background-image: url('../assets/img/background.jpg');
 }
+
+nav{
+    background-color: #795548;
+    
+}
+
+.btn-floating{
+    background-color: #a98274;
+}
+
+.red{
+    background-color:  #4b2c20 !important;
+}
+
+.btn-cart{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btn-back{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.btn-submit{
+    position: absolute;
+    height: 56px;
+    width: 56px;
+    border: 0;
+    background-color: red;
+    border-radius: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    color: red;
+}
+
+.icon-btn{
+    position: absolute;
+    padding-left: 16px;
+    padding-top: 15px;
+    color: white;
+}
+
+div-btn-submit{
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    bottom: 10px;
+    right: 10px;
+}

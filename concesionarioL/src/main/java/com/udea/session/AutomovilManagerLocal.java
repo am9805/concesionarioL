@@ -20,4 +20,6 @@ public interface AutomovilManagerLocal {
 
     Automovil update(Automovil automovil);
     
+    Boolean insert(Automovil automovil);
+    
 }
