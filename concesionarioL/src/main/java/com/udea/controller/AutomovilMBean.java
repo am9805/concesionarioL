@@ -15,7 +15,10 @@ import com.udea.session.MarcaManagerLocal;
 import com.udea.session.TipoAutomovilManagerLocal;
 import com.udea.session.VentaManagerLocal;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -47,9 +50,15 @@ public class AutomovilMBean implements Serializable {
     private Automovil newAutomovil;
     private List<Automovil> automoviles;
     private List<Automovil> carritoDeCompras;
+    private Factura factura;
+    private List<Factura> facturas;
+    private int total;
+    private String comprador;
+    private String idCliente;
     private List<Marca> marcas;
     private List<Linea> lineas;
     private List<Tipoautomovil> tipos;
+    private List<Venta> ventas;
     /*atributos para crear el automovil*/
     private Integer linea;
     private String color;
@@ -132,8 +141,27 @@ public class AutomovilMBean implements Serializable {
     public void setErrorCreate(String errorCreate) {
         this.errorCreate = errorCreate;
     }
-    
-    
+  
+     public void setComprador(String comprador) {
+        this.comprador = comprador;
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+        
     public List<Tipoautomovil> getTipos(){
          if (tipos == null || tipos.isEmpty()) {
             tipos = tipoAutomovilManager.getAllTipoAutomovil();
@@ -160,6 +188,19 @@ public class AutomovilMBean implements Serializable {
         }
         
         return lineas;
+
+    }
+    
+    public List<Factura> getFacturas(){
+        facturas = facturaManager.getAllFacturas();
+        return facturas;
+    }
+    
+    public List<Venta> getVentas(){
+        if(factura != null){
+            ventas = ventaManager.findByNumeroFactura(factura);
+        }
+        return ventas;
     }
     
     public AutomovilMBean() {
@@ -180,6 +221,14 @@ public class AutomovilMBean implements Serializable {
     public String changeAutomovil(Automovil auto){
         this.automovil = auto;
         return "DetailsAutomovil";
+    }
+    
+    public String detalleFactura(Factura factura){
+        
+        this.factura = factura;
+        //this.ventas = ventaManager.findByNumeroFactura(factura.getNumeroFactura());
+        System.out.println(factura.getNombreCliente());
+        return "DetalleFactura";
     }
     
     
@@ -257,6 +306,7 @@ public class AutomovilMBean implements Serializable {
         System.out.println("###UPDATE###");
         automovil.setEnVenta(false);
         automovil = automovilManager.update(automovil);
+        
         return "LIST"; 
     }
     
@@ -276,6 +326,15 @@ public class AutomovilMBean implements Serializable {
         return "CARRITO";
     }
     
+    public int total(){
+        this.total = 0;
+        for(Automovil automovil : carritoDeCompras){
+            //System.out.print(automovil.getPrecio());
+            total = total + automovil.getPrecio();
+        }
+        return total;
+    }
+    
     public boolean addCart(Automovil auto){
         boolean control = true;
         for (Automovil automovil : carritoDeCompras) {
@@ -293,6 +352,52 @@ public class AutomovilMBean implements Serializable {
     
     public void removeCart(Automovil auto){
         carritoDeCompras.remove(auto);
+        
+    }
+    public void comprar(){
+        List<Factura> facturas = facturaManager.getAllFacturas();
+        Integer numeroFactura = 0;
+        for (Factura factura : facturas){
+            if(factura.getNumeroFactura() > numeroFactura){
+                numeroFactura = factura.getNumeroFactura();
+            }
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+        Factura factura = new Factura(numeroFactura+1);
+        factura.setIdCliente(Integer.parseInt(idCliente));
+        factura.setNombreCliente(comprador);
+        factura.setPrecio(total);
+        factura.setFecha(date);
+        
+        if(facturaManager.insert(factura)){
+            System.out.println("Factura "+String.valueOf(factura.getNumeroFactura())+" insertada");
+            
+            for (Automovil auto : carritoDeCompras) {
+                //actualiza la foto y actualiza si está en venta
+                auto.setFoto(new byte[1]);
+                auto.setEnVenta(false);
+                //
+                List<Venta> ventas = ventaManager.getAllVentas();
+                Integer idVenta = 0;
+                for (Venta venta : ventas) {
+                    if(idVenta<venta.getIdVenta()){ 
+                        idVenta = venta.getIdVenta();
+                    }
+                }
+                Venta venta = new Venta(idVenta+1);
+                venta.setAutomovil(auto);
+                venta.setNumeroFactura(factura);
+                
+                if(ventaManager.insert(venta)){
+                    System.out.println("venta " + String.valueOf(venta.getIdVenta()) + " insertada");
+                }
+                automovilManager.update(auto);
+            }
+            comprador = null;
+            idCliente = null;
+            carritoDeCompras.clear();
+        }
     }
 
     private void refresh() {

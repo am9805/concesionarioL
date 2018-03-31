@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/styles.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="js/automovil.js"></script>
+    <script src="../js/automovil.js"></script>
     
     <style type="text/css">
         .old{
@@ -30,9 +30,9 @@
             
             <f:view>
             <h:form>
-                <h1>
-                    <h:outputText value="Listado :3" />
-                </h1>
+                <h3>
+                    <h:outputText value="Listado automoviles" />
+                </h3>
                 
                 <table>
                     <thead>
@@ -91,9 +91,9 @@
                     </tbody>
                   </table>
                 <h:commandLink
-                    class="btn-floating btn-large waves-effect waves-light btn-create-car" 
+                    class="btn-floating btn-large waves-effect waves-light red btn-back" 
                     action="CreateAutomovil" 
-                    value=""><i class="large material-icons">plus</i></h:commandLink>
+                    value=""><i class="large material-icons">add</i></h:commandLink>
                 <h:commandLink
                     class="btn-floating btn-large waves-effect waves-light red btn-cart" 
                     action="CarritoList" 
